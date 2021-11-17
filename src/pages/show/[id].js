@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import Head from 'next/head'
 import NextImage from 'next/image'
-
-import Header from 'components/Header'
 import { PlusIcon } from '@heroicons/react/solid'
+import Header from 'components/Header'
+import TrailerButton from 'components/TrailerButton'
 
 const CoverImage = ({ img }) => {
     return (
@@ -32,27 +32,6 @@ const PlayButton = () => {
             />
             <span className='uppercase font-medium tracking-wide'>
                 Play
-            </span>
-        </button>
-    )
-}
-
-const TrailerButton = () => {
-    return (
-        <button
-            className='flex items-center justify-center px-6
-            py-2.5 rounded text-xs md:text-base border-[1px]
-            border-white text-[#f9f9f9] bg-black/30
-            hover:bg-[#c6c6c6] hover:border-[#c6c6c6]
-            transition duration-300'
-        >
-            <img
-                src='/images/play-icon-white.svg'
-                alt=''
-                className='h-6 md:h-8'
-            />
-            <span className='uppercase font-medium tracking-wide'>
-                Trailer
             </span>
         </button>
     )
