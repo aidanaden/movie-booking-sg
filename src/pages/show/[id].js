@@ -75,7 +75,11 @@ export default function Show({ result }) {
     const BASE_URL = 'https://image.tmdb.org/t/p/original/'
     const img = `${BASE_URL}/${result.backdrop_path}` || `${BASE_URL}/${result.poster_path}`
 
-    const [showPlayer, setShowPlayer] = useState(false)
+    const [isOpen, setIsOpen] = useState(false)
+
+    const index = result.videos.results.findIndex(
+        (element) => element.type === 'Trailer'
+    )
 
     return (
         <div>
@@ -103,7 +107,11 @@ export default function Show({ result }) {
                     </h1>
                     <div className='flex items-center space-x-3 md:space-x-5'>
                         <PlayButton />
-                        <TrailerButton />
+                        <TrailerButton
+                            isOpen={isOpen}
+                            setIsOpen={setIsOpen}
+                            url={result.videos?.results[index]?.key}
+                        />
                         <AddButton />
                     </div>
                     <p className='text-xs md:text-sm'>
@@ -118,11 +126,6 @@ export default function Show({ result }) {
                         {result.overview}
                     </h4>
                 </div>
-                {/* BG OVERLAY */}
-                {showPlayer && (
-                    <div className='absolute inset-0 bg-black/50 h-full w-full' />
-                )}
-                
             </section>
         </div>
     )

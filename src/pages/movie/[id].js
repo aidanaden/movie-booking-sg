@@ -185,7 +185,6 @@ export default function Movie({ result }) {
                         {result.overview}
                     </h4>
                 </div>
-
             </section>
         </div>
     )
