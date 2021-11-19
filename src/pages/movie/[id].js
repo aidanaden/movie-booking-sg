@@ -4,6 +4,7 @@ import NextImage from 'next/image'
 import { PlusIcon } from '@heroicons/react/solid'
 import Header from 'components/Header'
 import TrailerButton from 'components/TrailerButton'
+import PagePreview from 'components/PagePreview'
 
 const CoverImage = ({ img }) => {
     return (
@@ -69,43 +70,13 @@ export default function Movie({ result }) {
                 <link rel='icon' href='/favicon.ico' />
             </Head>
             <Header />
-            <section className='relative'>
-                <CoverImage
-                    img={img}
-                />
-                <div
-                    className='absolute inset-y-28 md:inset-y-auto
-                    md:bottom-10 inset-x-4 md:inset-x-12 space-y-6
-                    z-50'
-                >
-                    <h1
-                        className='text-3xl sm:text-4xl md:text-5xl
-                        font-bold'    
-                    >
-                        {result.title || result.name}
-                    </h1>
-                    <div className='flex items-center space-x-3 md:space-x-5'>
-                        <PlayButton />
-                        <TrailerButton
-                            isOpen={isOpen}
-                            setIsOpen={setIsOpen}
-                            url={result.videos?.results[index]?.key}
-                        />
-                        <AddButton />
-                    </div>
-                    <p className='text-xs md:text-sm'>
-                        {result.release_date || result.first_air_date} •
-                        {" "}
-                        {Math.floor(result.runtime / 60)}h {result.runtime % 60}m •
-                        {" "}
-                        {result.genres.map((genre) => genre.name + " ")}
-                        {" "}
-                    </p>
-                    <h4 className='text-sm md:text-lg max-w-4xl'>
-                        {result.overview}
-                    </h4>
-                </div>
-            </section>
+            <PagePreview
+                bgImg={img}
+                isOpen={isOpen}
+                setIsOpen={setIsOpen}
+                result={result}
+                trailerUrl={result.videos?.results[index]?.key}
+            />
         </div>
     )
 }
