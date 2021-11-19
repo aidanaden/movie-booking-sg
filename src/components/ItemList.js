@@ -1,20 +1,10 @@
 import NextImage from 'next/image'
 import NextLink from 'next/link'
-import { useRouter } from 'next/router'
 
-const ItemThumbnail = ({ item, isMovie, router }) => {
+const ItemThumbnail = ({ item, isMovie }) => {
     const BASE_URL = 'https://image.tmdb.org/t/p/original/'
+    // const img = `${BASE_URL}/${item.poster_path}`
     const img = `${BASE_URL}/${item.backdrop_path}` || `${BASE_URL}/${item.poster_path}`
-
-    const handleOnClick = () => {
-        if (isMovie) {
-            router.push(`/movie/${item.id}`)
-        } else {
-            router.push(`/show/${item.id}`)
-        }
-    }
-
-    console.log(item)
 
     return (
             <NextLink href={isMovie ? `/movie/${item.id}` : `/show/${item.id}`}>
@@ -43,15 +33,12 @@ const ItemThumbnail = ({ item, isMovie, router }) => {
                             {item.vote_average}/10 ({item.vote_count})
                         </div>
                     </div>
-                    
                 </a>
             </NextLink>
     )
 }
 
 export default function ItemList({ title, isMovie, items }) {
-    const router = useRouter()
-
     return (
         <div
             className='relative flex flex-col space-y-2
@@ -71,7 +58,6 @@ export default function ItemList({ title, isMovie, items }) {
                         key={item.id}
                         item={item}
                         isMovie={isMovie}
-                        router={router}
                     />
                 ))}
             </div>

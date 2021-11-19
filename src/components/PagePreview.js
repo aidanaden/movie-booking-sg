@@ -1,15 +1,15 @@
-import NextImage from 'next/image'
 import { PlusIcon } from '@heroicons/react/solid'
 import TrailerButton from 'components/TrailerButton'
 
 const CoverImage = ({ img }) => {
     return (
         <div className='relative min-h-[calc(100vh-72px)]'>
-            <div className='bg-black/30 w-full h-full absolute' />
-            <NextImage
+            <div className=' bg-black/25 w-full h-full absolute' />
+            <img
                 src={img}
-                layout='fill'
-                objectFit='cover'
+                alt=''
+                className='object-cover w-full h-[calc(100vh-72px)]'
+                loading='lazy'
             />
         </div>
     )
@@ -48,12 +48,13 @@ const AddButton = () => {
     )
 }
 
-export default function PagePreview({ bgImg, isOpen, setIsOpen, result, trailerUrl }) {
+export default function PagePreview({ isOpen, setIsOpen, result, trailerUrl }) {
+    const BASE_URL = 'https://image.tmdb.org/t/p/original/'
+    const img = `${BASE_URL}/${result.backdrop_path}` || `${BASE_URL}/${result.poster_path}`
+
     return (
         <section className='relative'>
-            <CoverImage
-                img={bgImg}
-            />
+            <CoverImage img={img} />
             <div
                 className='absolute inset-y-28 md:inset-y-auto
                     md:bottom-10 inset-x-4 md:inset-x-12 space-y-6
@@ -64,11 +65,12 @@ export default function PagePreview({ bgImg, isOpen, setIsOpen, result, trailerU
                 </h1>
                 <div className='flex items-center space-x-3 md:space-x-5'>
                     <PlayButton />
+                    {trailerUrl && 
                     <TrailerButton
                         isOpen={isOpen}
                         setIsOpen={setIsOpen}
                         url={trailerUrl}
-                    />
+                    />}
                     <AddButton />
                 </div>
                 <p className='text-xs md:text-sm'>
@@ -79,7 +81,7 @@ export default function PagePreview({ bgImg, isOpen, setIsOpen, result, trailerU
                     {result.genres.map((genre) => genre.name + " ")}
                     {" "}
                 </p>
-                <h4 className='text-sm md:text-lg max-w-4xl'>
+                <h4 className='text-sm md:text-lg max-w-4xl line-clamp-4'>
                     {result.overview}
                 </h4>
             </div>

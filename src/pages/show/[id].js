@@ -4,9 +4,6 @@ import Header from 'components/Header'
 import PagePreview from 'components/PagePreview'
 
 export default function Show({ result }) {
-    const BASE_URL = 'https://image.tmdb.org/t/p/original/'
-    const img = `${BASE_URL}/${result.backdrop_path}` || `${BASE_URL}/${result.poster_path}`
-
     const [isOpen, setIsOpen] = useState(false)
 
     const index = result.videos.results.findIndex(
@@ -23,7 +20,6 @@ export default function Show({ result }) {
             </Head>
             <Header />
             <PagePreview
-                bgImg={img}
                 isOpen={isOpen}
                 setIsOpen={setIsOpen}
                 result={result}
