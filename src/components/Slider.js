@@ -25,7 +25,7 @@ const CarouselImage = ({ desktopImg, mobileImg, alt }) => {
 
 export default function Slider() {
     return (
-        <section className='relative mt-7 shadow-2xl mx-auto max-w-screen-2xl'>
+        <section className='relative shadow-2xl mx-auto max-w-screen-2xl'>
             <Carousel
                 autoPlay
                 infiniteLoop

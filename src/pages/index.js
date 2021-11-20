@@ -15,13 +15,13 @@ export default function Home({ popularMovies, popularShows, topMovies, topShows 
         </title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header />
       <main
         className='relative min-h-full after:bg-home
         after:bg-center after:bg-cover after:bg-no-repeat 
         after:bg-fixed after:absolute after:inset-0 after:z-[-1]
         pb-10'
       >
+        <Header />
         <Slider />
         <Brands />
         <ItemList

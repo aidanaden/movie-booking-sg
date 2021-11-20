@@ -3,7 +3,6 @@ import NextLink from 'next/link'
 
 const ItemThumbnail = ({ item, isMovie }) => {
     const BASE_URL = 'https://image.tmdb.org/t/p/original/'
-    // const img = `${BASE_URL}/${item.poster_path}`
     const img = `${BASE_URL}/${item.backdrop_path}` || `${BASE_URL}/${item.poster_path}`
 
     return (

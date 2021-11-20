@@ -1,6 +1,6 @@
 import NextImage from 'next/image'
 import { useRouter } from 'next/router'
-import {HomeIcon, SearchIcon, PlusIcon, StarIcon} from '@heroicons/react/solid'
+import { HomeIcon, SearchIcon, PlusIcon, StarIcon } from '@heroicons/react/solid'
 
 const NavLink = ({ Icon, children }) => {
     return (
